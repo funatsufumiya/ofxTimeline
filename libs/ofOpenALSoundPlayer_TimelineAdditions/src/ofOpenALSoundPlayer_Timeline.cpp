@@ -45,7 +45,7 @@ static set<ofOpenALSoundPlayer_Timeline*> & players(){
 // ----------------------------------------------------------------------------
 // from http://devmaster.net/posts/2893/openal-lesson-6-advanced-loading-and-error-handles
 static string getALErrorString(ALenum error) {
-	switch(error) {
+    switch(error) {
         case AL_NO_ERROR:
             return "AL_NO_ERROR";
         case AL_INVALID_NAME:
@@ -59,7 +59,25 @@ static string getALErrorString(ALenum error) {
         case AL_OUT_OF_MEMORY:
             return "AL_OUT_OF_MEMORY";
     };
-	return "UNKWOWN_ERROR";
+    return "UNKWOWN_ERROR";
+}
+
+static string getALCErrorString(ALCenum  error) {
+    switch(error) {
+        case ALC_NO_ERROR:
+            return "ALC_NO_ERROR";
+        case ALC_INVALID_DEVICE:
+            return "ALC_INVALID_DEVICE";
+        case ALC_INVALID_CONTEXT:
+            return "ALC_INVALID_CONTEXT";
+        case ALC_INVALID_ENUM:
+            return "ALC_INVALID_ENUM";
+        case ALC_INVALID_VALUE:
+            return "ALC_INVALID_VALUE";
+        case ALC_OUT_OF_MEMORY:
+            return "ALC_OUT_OF_MEMORY";
+    };
+    return "UNKWOWN_ERROR";
 }
 
 #ifdef OF_USING_MPG123
@@ -147,8 +165,21 @@ ofOpenALSoundPlayer_Timeline::~ofOpenALSoundPlayer_Timeline(){
 // this should only be called once
 void ofOpenALSoundPlayer_Timeline::initialize(){
 	if(!alDevice){
-		alDevice = alcOpenDevice(nullptr);
-		alContext = alcCreateContext(alDevice,nullptr);
+        alDevice = alcOpenDevice( nullptr );
+        if( !alDevice ){
+            ofLogError("ofOpenALSoundPlayer") << "initialize(): couldn't open OpenAL default device";
+            return;
+        }else{
+            ofLogVerbose("ofOpenALSoundPlayer") << "initialize(): opening "<< alcGetString( alDevice, ALC_DEVICE_SPECIFIER );
+        }
+        // Create OpenAL context and make it current. If fails, close the OpenAL device that was just opened.
+        alContext = alcCreateContext( alDevice, nullptr );
+        if( !alContext ){
+            ALCenum err = alcGetError( alDevice );
+            ofLogError("ofOpenALSoundPlayer") << "initialize(): couldn't not create OpenAL context : "<< getALCErrorString( err );
+            close();
+            return;
+        }
 		alcMakeContextCurrent (alContext);
 		alListener3f(AL_POSITION, 0,0,0);
 #ifdef OF_USING_MPG123
