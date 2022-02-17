@@ -961,7 +961,7 @@ void ofxTimeline::setLockWidthToWindow(bool lockWidth){
 void ofxTimeline::setMinimalHeaders(bool headersMinimal){
 	if(minimalHeaders != headersMinimal){
 		minimalHeaders = headersMinimal;
-		for(int i = 0; i < pages.size(); i++){
+        for(unsigned int i = 0; i < pages.size(); i++){
 			pages[i]->setMinimalHeaders(minimalHeaders);
 		}
 	}
@@ -979,7 +979,7 @@ bool ofxTimeline::toggleShowFooters(){
 void ofxTimeline::setFootersHidden(bool hidden){
 	if(hidden != footersHidden){
 		footersHidden = hidden;
-		for(int i = 0; i < pages.size(); i++){
+        for(unsigned int i = 0; i < pages.size(); i++){
 			pages[i]->hideFooters(footersHidden);
 		}
 	}
@@ -1061,7 +1061,7 @@ ofVec2f ofxTimeline::getBottomRight(){
 void ofxTimeline::updatePagePositions(){
 	if(isSetup){
 		ofVec2f pageOffset = ofVec2f(offset.x, ticker->getBottomEdge());
-		for(int i = 0; i < pages.size(); i++){
+        for(unsigned int i = 0; i < pages.size(); i++){
 			pages[i]->setContainer(pageOffset, width);
 		}
 		if(currentPage != NULL){

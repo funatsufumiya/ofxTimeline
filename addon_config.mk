@@ -53,13 +53,17 @@ common:
 linux64:
 	# when parsing the file system looking for libraries exclude this for all or 
 	# a specific platform
-	ADDON_LIBS_EXCLUDE = libs/kiss
+	ADDON_LIBS_EXCLUDE = libs/kiss libs/openal
+	ADDON_LIBS_EXCLUDE = libs/kiss/% libs/openal/%
+	ADDON_PKG_CONFIG_LIBRARIES = openal
 	#ADDON_LIBS_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions
 	#ADDON_SOURCES_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions/%
 	#ADDON_INCLUDES_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions/%
 	
 linux:
-	ADDON_LIBS_EXCLUDE = libs/kiss
+	ADDON_LIBS_EXCLUDE = libs/kiss libs/openal
+	ADDON_INCLUDES_EXCLUDE = libs/kiss libs/openal libs/sndfile
+	ADDON_PKG_CONFIG_LIBRARIES = openal
 	#ADDON_LIBS_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions
 	#ADDON_SOURCES_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions/%
 	#ADDON_INCLUDES_EXCLUDE = libs/ofOpenALSoundPlayer_TimelineAdditions/%

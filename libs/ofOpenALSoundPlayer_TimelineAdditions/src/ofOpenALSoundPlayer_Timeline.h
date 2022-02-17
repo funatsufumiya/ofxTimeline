@@ -5,10 +5,6 @@
 #include "ofThread.h"
 
 typedef unsigned int ALuint;
-/** Opaque device handle */
-typedef struct ALCdevice_struct ALCdevice;
-/** Opaque context handle */
-typedef struct ALCcontext_struct ALCcontext;
 
 
 
@@ -118,8 +114,6 @@ class ofOpenALSoundPlayer_Timeline : public ofBaseSoundPlayer, public ofThread {
 		float speed; // -n to n, 1 = normal, -1 backwards
 		unsigned int length; // in samples;
 
-		static ALCdevice * alDevice;
-		static ALCcontext * alContext;
 		static std::vector<float> window;
 		static float windowSum;
 

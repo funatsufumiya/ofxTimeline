@@ -1,5 +1,5 @@
 #include "ofOpenALSoundPlayer_Timeline.h"
-#include "ofOpenALSoundPlayer.h"
+//#include "ofOpenALSoundPlayer.h"
 
 #include "ofConstants.h"
 #include "glm/gtc/constants.hpp"
@@ -16,14 +16,15 @@
 #include <AL/alc.h>
 #endif
 
+static ALCdevice * alDevice = nullptr;
+static ALCcontext * alContext = nullptr;
+
 #ifdef OF_USING_MPG123
 #include <mpg123.h>
 #endif
 
 using namespace std;
 
-ALCdevice * ofOpenALSoundPlayer_Timeline::alDevice = 0;
-ALCcontext * ofOpenALSoundPlayer_Timeline::alContext = 0;
 vector<float> ofOpenALSoundPlayer_Timeline::window;
 float ofOpenALSoundPlayer_Timeline::windowSum=0;
 
@@ -170,7 +171,7 @@ void ofOpenALSoundPlayer_Timeline::initialize(){
             ofLogError("ofOpenALSoundPlayer") << "initialize(): couldn't open OpenAL default device";
             return;
         }else{
-            ofLogVerbose("ofOpenALSoundPlayer") << "initialize(): opening "<< alcGetString( alDevice, ALC_DEVICE_SPECIFIER );
+            ofLogVerbose("ofOpenALSoundPlayer") << "initialize(): opening " << alcGetString( alDevice, ALC_DEVICE_SPECIFIER );
         }
         // Create OpenAL context and make it current. If fails, close the OpenAL device that was just opened.
         alContext = alcCreateContext( alDevice, nullptr );
@@ -181,6 +182,10 @@ void ofOpenALSoundPlayer_Timeline::initialize(){
             return;
         }
 		alcMakeContextCurrent (alContext);
+        ofLogVerbose("ofOpenALSoundPlayer") << "Vendor: " << alGetString(AL_VENDOR);
+        ofLogVerbose("ofOpenALSoundPlayer") << "Renderer: " << alGetString(AL_RENDERER);
+        ofLogVerbose("ofOpenALSoundPlayer") << "Version: " << alGetString(AL_VERSION);
+
 		alListener3f(AL_POSITION, 0,0,0);
 #ifdef OF_USING_MPG123
 		mpg123_init();
