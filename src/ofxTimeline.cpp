@@ -155,10 +155,11 @@ void ofxTimeline::setup(const string& dataPathRoot){
 	zoomer->setDrawRect(ofRectangle(offset.y, ticker->getBottomEdge(), width, ZOOMER_HEIGHT));
 
 	//Update the data paths
-	defaultPalettePath = dataPathRoot + "defaultColorPalette.png";
-	fontPath = dataPathRoot + "NewMedia Fett.ttf";
+    defaultPalettePath = ofFilePath::addTrailingSlash(dataPathRoot) + "defaultColorPalette.png";
+    fontPath = ofFilePath::addTrailingSlash(dataPathRoot) + "NewMedia Fett.ttf";
+    colors.load(ofFilePath::addTrailingSlash(dataPathRoot) + "defaultColors.xml");
 
-	colors.load(dataPathRoot + "defaultColors.xml");
+
 
 	enable();
 
