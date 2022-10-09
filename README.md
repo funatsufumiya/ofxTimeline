@@ -1,5 +1,5 @@
 ## Updates to this Fork ##
-This fork has been updated to OF 0.10.1
+This fork has been updated to OF 0.11.2
 
 Tested only on Linux and OSX/MacOS for the time being. QtCreator projects have been added to most of the examples.
 
