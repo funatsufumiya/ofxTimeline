@@ -39,8 +39,6 @@
 #include "ofMain.h"
 #include "ofxTLTrack.h"
 #include "ofOpenALSoundPlayer_TimelineAdditions.h"
-#include "waveformDraw.h"
-#include "ofxSoundPlayerObject.h"
 
 class ofxTLAudioTrack : public ofxTLTrack
 {
