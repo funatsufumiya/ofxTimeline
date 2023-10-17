@@ -4,11 +4,8 @@
 //========================================================================
 int main( ){
     
-    // this example uses compute shaders which are only supported since
-    // openGL 4.3
     ofGLWindowSettings settings;
-    settings.setSize(1920, 1080);
-    settings.setGLVersion(4,1);
+    settings.setSize(1024, 768);
     settings.windowMode = OF_WINDOW;
 
     auto window = ofCreateWindow(settings);
