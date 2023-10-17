@@ -48,9 +48,10 @@ example-videoRenderer/bin/data/renders/
 oldExamples/
 
 # OpenAL and Soundfile libs on Windows
-!libs/openal/libs/win_cb/*.lib
-!libs/openal/libs/win_cb/**/*.lib
-!libs/sndfile/lib/win_cb/*
+!libs/openal/libs/vs/*.lib
+!libs/openal/libs/vs/**/*.lib
+!libs/sndfile/lib/vs/*
+!libs/sndfile/export/vs/**
 
 # IDE-specific ignore patterns (e.g., user-specific files)
 
