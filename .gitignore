@@ -70,6 +70,13 @@ oldExamples/
 # XCode 4
 xcuserdata
 *.xcworkspace
+*.xcconfig
+*.pbxproj
+*.entitlements
+*.xcconfig
+*.plist
+*.plist
+*.xcconfig
 
 # Code::Blocks
 *.depend
