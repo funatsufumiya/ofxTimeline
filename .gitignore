@@ -134,3 +134,7 @@ Desktop.ini
 *.log
 *.sql
 *.sqlite
+
+*.plist
+*.xcscheme
+*.xcconfig
