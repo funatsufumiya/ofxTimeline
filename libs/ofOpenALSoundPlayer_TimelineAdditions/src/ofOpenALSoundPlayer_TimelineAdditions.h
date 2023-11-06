@@ -12,7 +12,7 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofOpenALSoundPlayer_Timelin
 		ofOpenALSoundPlayer_TimelineAdditions();
 		virtual ~ofOpenALSoundPlayer_TimelineAdditions();
 
-        float getDuration() const;
+        //float getDuration() const;
         int getNumChannels() const;
 
         vector<short> & getBuffer();

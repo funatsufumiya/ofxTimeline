@@ -67,6 +67,10 @@ class ofOpenALSoundPlayer_Timeline : public ofBaseSoundPlayer, public ofThread {
 
 		float getPosition() const;
 		int getPositionMS() const;
+        float getDuration() const;
+        unsigned int getDurationMS() const;
+
+
 		bool isPlaying() const;
 		float getSpeed() const;
 		float getPan() const;

@@ -753,6 +753,13 @@ float ofOpenALSoundPlayer_Timeline::getPan() const{
 float ofOpenALSoundPlayer_Timeline::getVolume() const{
 	return volume;
 }
+float ofOpenALSoundPlayer_Timeline::getDuration() const {
+    return (float)length / 1000.0f;
+}
+//--------------------------------------------------------------
+unsigned int ofOpenALSoundPlayer_Timeline::getDurationMS() const {
+    return length;
+}
 
 //------------------------------------------------------------
 void ofOpenALSoundPlayer_Timeline::setVolume(float vol){

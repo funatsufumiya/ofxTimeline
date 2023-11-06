@@ -22,9 +22,9 @@ ofOpenALSoundPlayer_TimelineAdditions::~ofOpenALSoundPlayer_TimelineAdditions(){
 }
 
 // ----------------------------------------------------------------------------
-float ofOpenALSoundPlayer_TimelineAdditions::getDuration() const{
-    return duration;
-}
+//float ofOpenALSoundPlayer_TimelineAdditions::getDuration() const{
+//    return duration;
+//}
 
 // ----------------------------------------------------------------------------
 int ofOpenALSoundPlayer_TimelineAdditions::getNumChannels() const{
