@@ -223,7 +223,7 @@ void ofOpenALSoundPlayer_Timeline::close(){
 // ----------------------------------------------------------------------------
 bool ofOpenALSoundPlayer_Timeline::sfReadFile(const std::filesystem::path& path, vector<short> & buffer, vector<float> & fftAuxBuffer){
 	SF_INFO sfInfo;
-	SNDFILE* f = sf_open(path.c_str(),SFM_READ,&sfInfo);
+	SNDFILE* f = sf_open(path.string().c_str(), SFM_READ, &sfInfo);
 	if(!f){
         ofLogError("ofOpenALSoundPlayer_Timeline") << "sfReadFile(): couldn't read \"" << path << "\"";
 		return false;
@@ -316,7 +316,7 @@ bool ofOpenALSoundPlayer_Timeline::mpg123ReadFile(const std::filesystem::path& p
 bool ofOpenALSoundPlayer_Timeline::sfStream(const std::filesystem::path& path,vector<short> & buffer,vector<float> & fftAuxBuffer){
 	if(!streamf){
 		SF_INFO sfInfo;
-		streamf = sf_open(path.c_str(),SFM_READ,&sfInfo);
+		streamf = sf_open(path.string().c_str(), SFM_READ, &sfInfo);
 		if(!streamf){
             ofLogError("ofOpenALSoundPlayer_Timeline") << "sfStream(): couldn't read \"" << path << "\"";
 			return false;
